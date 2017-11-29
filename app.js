@@ -1,6 +1,6 @@
 // create the module and name it waveCemApp
 // also include ngRoute for all our routing needs
-var waveCemApp = angular.module('waveCemApp', ['ngRoute']);
+var waveCemApp = angular.module('waveCemApp', ['ngRoute','ngAnimate']);
 
 // routing
 waveCemApp.config(function($routeProvider) {

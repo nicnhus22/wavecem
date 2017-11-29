@@ -7,13 +7,14 @@ angular.module('waveCemApp').controller('applicationController', function($scope
 	$('ul.tabs').tabs();
 	$('.collapsible').collapsible();
 
-    // create a message to display in our view
+    // here fetch app with name
     $scope.application = {
     	name:$routeParams.name,
    		status:"ELI",
    		progress:100,
     }
 
+    // here fetch questions
     $scope.mandatoryQuestions = [{
     	id:"A-01",
     	question:"Etes-vous sujets a des lois ou reglementations dans le cadre de votre projet (certifications ou auditabilite, donnees personnelles ou bancaires, applications du SIIV etc.) ?",
@@ -51,6 +52,7 @@ angular.module('waveCemApp').controller('applicationController', function($scope
     	category:"Contraintes projet"
     }];
 
+    // here fetch subquestions
     $scope.subQuestions = [{
     	id:"A-01-01",
     	question:"Etes-vous sujets a des lois ou reglementations dans le cadre onnelles ou bancaires, applications du SIIV etc.) ?",
@@ -77,7 +79,9 @@ angular.module('waveCemApp').controller('applicationController', function($scope
     }
 
     $scope.updateAnswer = function(question) {
+    	if(question.answer === 'no') {// target response = yes then 
 
+    	}
     }
 
 	    

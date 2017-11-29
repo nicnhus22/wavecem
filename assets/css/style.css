@@ -239,5 +239,12 @@ tbody:before {
     display:block;
 }
 
+input[type=radio]:checked + label {
+  color: #26a69a !important;
+} 
+
+
+
+
 
 
