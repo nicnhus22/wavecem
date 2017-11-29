@@ -1,0 +1,78 @@
+<!-- home.html -->
+<div class="container-fluid">
+  <h3 class="page_title">applications</h3>
+
+    <div class="overview_block row">
+		<div class="col s2 offset-s1 z-depth-1 overview_block_element">
+			<div class="value" style="color:#607d8b !important">{{overviewData.all}}</div>
+			<div class="label" style="color:#607d8b !important">all</div>
+		</div>
+		<div class="col s2 z-depth-1 teal lighten-1 overview_block_element">
+			<div class="value">{{overviewData.el}}</div>
+			<div class="label">eligible</div>
+		</div>
+		<div class="col s2 z-depth-1 red lighten-1 overview_block_element">
+			<div class="value">{{overviewData.ne}}</div>
+			<div class="label">conditions</div>
+		</div>
+		<div class="col s2 z-depth-1 orange lighten-1 overview_block_element">
+			<div class="value">{{overviewData.uc}}</div>
+			<div class="label">non-eligible</div>
+		</div>
+		<div class="col s2 z-depth-1 blue lighten-1 overview_block_element">
+			<div class="value">{{overviewData.tc}}</div>
+			<div class="label">to complete</div>
+		</div>
+    </div>
+
+    <div class="row">
+    	<div class="input-field col s10">
+			<input id="icon_prefix" type="text" class="validate" ng-model="searchKeyword">
+			<label for="icon_prefix">Search for an application or a status</label>
+	    </div>
+	    <a class="waves-effect waves-light btn-large right col s2">AJOUTER</a>
+    </div>
+    
+    <table class="applications_table striped">
+    	<col width="5%">
+	  	<col width="20%">
+	  	<col width="60%">
+	  	<col width="15%">
+        <thead>
+          <tr>
+              <th>#</th>
+              <th>Status</th>
+              <th>Application name</th>
+              <th>Progress</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="application in applications | filter: searchKeyword"  ng-click="viewApplication(application)" class="pointer">
+		    <td>{{$index+1}}</td>
+		     <td>
+			    <div ng-switch="application.status">
+				  <div ng-switch-when="ELI">
+				  	<span class="new badge green left" data-badge-caption="ELIGIBLE"></span>
+				  </div>
+				  <div ng-switch-when="TBC">
+				  	<span class="new badge red left" data-badge-caption="NON-ELIGIBLE"></span>
+				  </div>
+				  <div ng-switch-when="NEL">
+				  	<span class="new badge blue left" data-badge-caption="TO BE COMPLETED"></span>
+				  </div>
+				  <div ng-switch-default>
+				  	<span class="new badge blue grey" data-badge-caption="UNKNOWN"></span>
+				  </div>
+				</div> 
+		    </td>
+		    <td>{{ application.name }}</td>
+		    <td>
+		    	<div class="progress">
+			      	<div class="determinate" style="width: {{ application.progress }}%"></div>
+			  	</div>        
+		    </td>
+		  </tr>
+        </tbody>
+    </table>  
+</div>
