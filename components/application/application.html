@@ -23,45 +23,42 @@
 						<th>Answer</th>
 					</tr>
 				</thead>
-				<tbody ng-repeat="question in mandatoryQuestions">
+				<tbody ng-repeat="(questionIndex, question) in mandatoryQuestions">
 					<tr style="border-left:5px {{ getHexColorForCategory(question.category) }} solid; margin-bottom:5px">
-						<td>{{ question.id}}</td>
+						<td class="center">{{ question.id}}</td>
 						<td>
 							<span class="new badge left no-margin {{ getColorForCategory(question.category) }}" data-badge-caption="{{ question.category }}"></span><br/><br/>
 							{{ question.question }}
 						</td>
 						<td ng-init="question.answer=question.answer">
 							<p>
-								<input name="group_{{$index}}" type="radio" id="answer_yes_{{$index}}" value="yes" ng-model="question.answer" ng-change="updateAnswer(question)" />
-								<label for="answer_yes_{{$index}}">Yes</label>
+								<input name="group_{{questionIndex}}" type="radio" id="answer_yes_{{questionIndex}}" value="yes" ng-model="question.answer" />
+								<label for="answer_yes_{{questionIndex}}">Yes</label>
 							</p>
 							<p>
-								<input name="group_{{$index}}" type="radio" id="answer_no_{{$index}}" value="no" ng-model="question.answer" ng-change="updateAnswer(question)"/>
-								<label for="answer_no_{{$index}}">No</label>
+								<input name="group_{{questionIndex}}" type="radio" id="answer_no_{{questionIndex}}" value="no" ng-model="question.answer" />
+								<label for="answer_no_{{questionIndex}}">No</label>
 							</p>
 							<p>
-								<input name="group_{{$index}}" type="radio" id="answer_unknown_{{$index}}" value="unknown" ng-model="question.answer" ng-change="updateAnswer(question)"/>
-								<label for="answer_unknown_{{$index}}">Unknown</label>
+								<input name="group_{{questionIndex}}" type="radio" id="answer_unknown_{{questionIndex}}" value="unknown" ng-model="question.answer" />
+								<label for="answer_unknown_{{questionIndex}}">Unknown</label>
 							</p>
 						</td>
 					</tr>
-					<tr ng-repeat="subQuestion in getSubQuestions(question)" ng-show="question.answer === 'yes'"  style="border-left:5px {{ getHexColorForCategory(question.category) }} solid; margin-bottom:5px">
-		                <td>{{ subQuestion.id}}</td>
-						<td>
-							<span class="new badge left no-margin {{ getColorForCategory(subQuestion.category) }}" data-badge-caption="{{ subQuestion.category }}"></span><br/><br/>
-							{{ subQuestion.question }}
-						</td>
+					<tr ng-repeat="(subQuestionIndex, subQuestion) in getSubQuestions(question)" ng-show="question.answer === 'yes'"  style="border-left:5px {{ getHexColorForCategory(question.category) }} solid; margin-bottom:5px">
+		                <td class="center">{{ subQuestion.id}}</td>
+						<td>{{ subQuestion.question }}</td>
 						<td ng-init="subQuestion.answer=subQuestion.answer" >
 							<p>
-								<input name="sub_group_{{$index}}" type="radio" id="sub_answer_yes_{{$index}}" value="yes" ng-model="subQuestion.answer" ng-change="updateAnswer(question)" />
-								<label for="sub_answer_yes_{{$index}}">Yes</label>
+								<input name="sub_group_{{questionIndex}}_{{subQuestionIndex}}" type="radio" id="sub_answer_yes_{{questionIndex}}_{{subQuestionIndex}}" value="yes" ng-model="subQuestion.answer"/>
+								<label for="sub_answer_yes_{{questionIndex}}_{{subQuestionIndex}}">Yes</label>
 							</p>
 							<p>
-								<input name="sub_group_{{$index}}" type="radio" id="sub_answer_no_{{$index}}" value="no" ng-model="subQuestion.answer" ng-change="updateAnswer(question)"/>
-								<label for="sub_answer_no_{{$index}}">No</label>
+								<input name="sub_group_{{questionIndex}}_{{subQuestionIndex}}" type="radio" id="sub_answer_no_{{questionIndex}}_{{subQuestionIndex}}" value="no" ng-model="subQuestion.answer"/>
+								<label for="sub_answer_no_{{questionIndex}}_{{subQuestionIndex}}">No</label>
 							</p>
 							<p>
-								<input name="sub_group_{{$index}}" type="radio" id="sub_answer_unknown_{{$index}}" value="unknown" ng-model="subQuestion.answer" ng-change="updateAnswer(question)"/>
+								<input name="sub_group_{{questionIndex}}_{{subQuestionIndex}}" type="radio" id="sub_answer_unknown_{{questionIndex}}_{{subQuestionIndex}}" value="unknown" ng-model="subQuestion.answer"/>
 								<label for="sub_answer_unknown_{{$index}}">Unknown</label>
 							</p>
 						</td>             
