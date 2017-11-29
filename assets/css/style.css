@@ -231,5 +231,13 @@ ul.tabs {
     margin:0 !important;
 }
 
+tbody:before {
+    /* This doesn't work because of border-collapse */
+    line-height:1em;
+    content:".";
+    color:#f7f7f7; /* bacground color */
+    display:block;
+}
+
 
 

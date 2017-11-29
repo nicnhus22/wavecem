@@ -12,7 +12,7 @@
 			</ul>
 		</div>
 		<div id="tab_survey" class="col s12">
-			<table class="questions_table striped">
+			<table class="questions_table">
 				<col width="10%">
 				<col width="75%">
 				<col width="15%">
@@ -24,7 +24,7 @@
 					</tr>
 				</thead>
 				<tbody ng-repeat="question in mandatoryQuestions">
-					<tr>
+					<tr style="border-left:5px {{ getHexColorForCategory(question.category) }} solid; margin-bottom:5px">
 						<td>{{ question.id}}</td>
 						<td>
 							<span class="new badge left no-margin {{ getColorForCategory(question.category) }}" data-badge-caption="{{ question.category }}"></span><br/><br/>
@@ -45,7 +45,7 @@
 							</p>
 						</td>
 					</tr>
-					<tr ng-repeat="subQuestion in getSubQuestions(question)" ng-show="question.answer === 'yes'" style="background-color:red">
+					<tr ng-repeat="subQuestion in getSubQuestions(question)" ng-show="question.answer === 'yes'"  style="border-left:5px {{ getHexColorForCategory(question.category) }} solid; margin-bottom:5px">
 		                <td>{{ subQuestion.id}}</td>
 						<td>
 							<span class="new badge left no-margin {{ getColorForCategory(subQuestion.category) }}" data-badge-caption="{{ subQuestion.category }}"></span><br/><br/>

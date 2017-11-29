@@ -85,6 +85,10 @@ angular.module('waveCemApp').controller('applicationController', function($scope
         return waveCemService.getColorForCategory(category);
     }
 
+    $scope.getHexColorForCategory = function(category) {
+        return waveCemService.getHexColorForCategory(category);
+    }
+
 });
 
 
