@@ -247,6 +247,8 @@ textarea {
     margin: 0 15px !important;
 }
 
-
+td.reduced_border {
+    padding: 5px 5px !important; 
+}
 
 

@@ -17,6 +17,14 @@
 							<tr>
 								<td>
 									<div class="input-field col s12">
+							          <textarea id="question_{{question.id}}" class="materialize-textarea">{{ question.question }}</textarea>
+							          <label for="question_{{question.id}}" class="{{ question.question === '' ? '' : 'active'}}">Question</label>
+							        </div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-field col s12">
 							          <textarea id="action_if_no_{{question.id}}" class="materialize-textarea">{{ question.actionIfNo }}</textarea>
 							          <label for="action_if_no_{{question.id}}" class="{{ question.actionIfNo === '' ? '' : 'active'}}">Action if no</label>
 							        </div>
