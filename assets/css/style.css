@@ -243,7 +243,9 @@ input[type=radio]:checked + label {
   color: #26a69a !important;
 } 
 
-
+textarea {
+    margin: 0 15px !important;
+}
 
 
 

@@ -1,6 +1,48 @@
 <!-- home.html -->
-<div class="jumbotron text-center">
-    <h1>Survey page</h1>
+<div class="container-fluid" ng-controller="surveyController">
+	<h3 class="page_title">Edit my questions</h3>
 
-    <p>{{ message }}</p>
+	<div style="margin-top:75px">
+	   <select ng-selected="categories[0]" ng-init="changeSelectedCategoryQuestions()" ng-options="category.name for category in categories" ng-model="selectedCategory" ng-change="changeSelectedCategoryQuestions()">
+	     <option value="" disabled>Choose filter</option>
+	   </select>
+	</div>
+
+	<table class="questions_table">
+		<tbody ng-repeat="(questionIndex, question) in questionsForCategory">
+			<tr style="border-left:5px {{ getHexColorForCategory(question.category) }} solid">
+				<td>
+					<table class="questions_table">
+						<tbody>
+							<tr>
+								<td>
+									<div class="input-field col s12">
+							          <textarea id="action_if_no_{{question.id}}" class="materialize-textarea">{{ question.actionIfNo }}</textarea>
+							          <label for="action_if_no_{{question.id}}" class="{{ question.actionIfNo === '' ? '' : 'active'}}">Action if no</label>
+							        </div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-field col s12">
+							          <textarea id="action_if_yes_{{question.id}}" class="materialize-textarea">{{ question.actionIfYes }}</textarea>
+							          <label for="action_if_yes_{{question.id}}" class="{{ question.actionIfYes === '' ? '' : 'active'}}">Action if yes</label>
+							        </div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-field col s12">
+							          <textarea id="action_if_unknown_{{question.id}}" class="materialize-textarea">{{ question.actionIfUnknown }}</textarea>
+							          <label for="action_if_unknown_{{question.id}}" class="{{ question.actionIfUnknown === '' ? '' : 'active'}}">Action if unknown</label>
+							        </div>
+								</td>
+							</tr>
+						</tbody>
+					</table> 
+				</td>
+			</tr>
+		</tbody>
+	</table> 
+
 </div>

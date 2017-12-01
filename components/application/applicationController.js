@@ -5,7 +5,6 @@ angular.module('waveCemApp').controller('applicationController', function($scope
 
 	// initialize
 	$('ul.tabs').tabs();
-	$('.collapsible').collapsible();
 
     // here fetch app with name
     $scope.application = {
@@ -70,6 +69,10 @@ angular.module('waveCemApp').controller('applicationController', function($scope
     	category:"Gestion des donnees"
     }];
 
+    /*
+    	This gets all the sub questions given a mandatory question
+    	It looks for the first letter to determine whether or not a subquestion is in the right category
+    */
     $scope.getSubQuestions = function(question) {
     	var subQuestionFiltered = $.grep($scope.subQuestions, function(q) {
 		    return q.id.charAt(0) === question.id.charAt(0);
@@ -78,17 +81,19 @@ angular.module('waveCemApp').controller('applicationController', function($scope
     	return subQuestionFiltered;
     }
 
-    $scope.updateAnswer = function(question) {
-    	if(question.answer === 'no') {// target response = yes then 
-
-    	}
-    }
-
-	    
+	
+	/**
+		Map categories to colors
+		returns a color with the Materialize format (ie. ligthen blue)
+	**/	    
     $scope.getColorForCategory = function(category) {
         return waveCemService.getColorForCategory(category);
     }
 
+	/**
+		Map categories to colors
+		returns a hexadecimal color 
+	**/	 
     $scope.getHexColorForCategory = function(category) {
         return waveCemService.getHexColorForCategory(category);
     }
