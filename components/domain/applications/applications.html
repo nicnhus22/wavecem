@@ -1,5 +1,5 @@
 <!-- home.html -->
-<div class="container-fluid" ng-controller="applicationsController">
+<div class="container-fluid">
   <h3 class="page_title">applications</h3>
 
     <div class="overview_block row">
@@ -8,19 +8,19 @@
 			<div class="label" style="color:#607d8b !important">all</div>
 		</div>
 		<div class="col s2 z-depth-1 teal lighten-1 overview_block_element">
-			<div class="value">{{overviewData.el}}</div>
+			<div class="value">{{overviewData.eli}}</div>
 			<div class="label">eligible</div>
 		</div>
 		<div class="col s2 z-depth-1 red lighten-1 overview_block_element">
-			<div class="value">{{overviewData.ne}}</div>
+			<div class="value">{{overviewData.nel}}</div>
 			<div class="label">conditions</div>
 		</div>
 		<div class="col s2 z-depth-1 orange lighten-1 overview_block_element">
-			<div class="value">{{overviewData.uc}}</div>
+			<div class="value">{{overviewData.euc}}</div>
 			<div class="label">non-eligible</div>
 		</div>
 		<div class="col s2 z-depth-1 blue lighten-1 overview_block_element">
-			<div class="value">{{overviewData.tc}}</div>
+			<div class="value">{{overviewData.tbc}}</div>
 			<div class="label">to complete</div>
 		</div>
     </div>
@@ -66,7 +66,7 @@
 				  </div>
 				</div> 
 		    </td>
-		    <td>{{ application.name }}</td>
+		    <td>{{ application.application }}</td>
 		    <td>
 		    	<div class="progress">
 			      	<div class="determinate" style="width: {{ application.progress }}%"></div>
@@ -85,7 +85,7 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input placeholder="Application name" id="add_application_name" type="text" value="{{ addedApplication.name }}"  ng-model="addedApplication.name">
+					<input placeholder="Application name" id="add_application_name" type="text" value="{{ addedApplication.application }}"  ng-model="addedApplication.application">
 					<label for="add_application_name" class="active">Application name</label>
 				</div>
 			</div>

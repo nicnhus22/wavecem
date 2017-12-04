@@ -15,7 +15,7 @@ waveCemApp.controller('mainController', ['$scope', '$rootScope', 'Auth', 'AUTH_E
 		}
 		
 		var showNotAuthorized = function(){
-			alert("Not Authorized");
+			// alert("Not Authorized");
 		}
 		
 		$scope.currentUser = undefined;
