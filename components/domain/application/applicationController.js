@@ -1,14 +1,14 @@
 
 
 // create the controller and inject Angular's $scope
-angular.module('waveCemApp').controller('applicationController', function($scope, $routeParams, waveCemService) {
+angular.module('waveCemApp').controller('applicationController', function($scope, $stateParams, helperFactory) {
 
 	// initialize
 	$('ul.tabs').tabs();
 
     // here fetch app with name
     $scope.application = {
-    	name:$routeParams.name,
+    	name:$stateParams.name,
    		status:"ELI",
    		progress:100,
     }
@@ -81,13 +81,12 @@ angular.module('waveCemApp').controller('applicationController', function($scope
     	return subQuestionFiltered;
     }
 
-	
 	/**
 		Map categories to colors
 		returns a color with the Materialize format (ie. ligthen blue)
 	**/	    
     $scope.getColorForCategory = function(category) {
-        return waveCemService.getColorForCategory(category);
+        return helperFactory.getColorForCategory(category);
     }
 
 	/**
@@ -95,7 +94,7 @@ angular.module('waveCemApp').controller('applicationController', function($scope
 		returns a hexadecimal color 
 	**/	 
     $scope.getHexColorForCategory = function(category) {
-        return waveCemService.getHexColorForCategory(category);
+        return helperFactory.getHexColorForCategory(category);
     }
 
 });

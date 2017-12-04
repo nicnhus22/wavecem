@@ -1,0 +1,37 @@
+<!-- home.html -->
+<div class="container-fluid" ng-controller="applicationActionPlanController">
+	<div class="row">
+		<div class="col s12">
+			<!-- ELIGIBLE -->
+			<div ng-if="actionPlanStatus === 'ELI'">
+				<div class="card teal lighten-1">
+					<div class="card-content white-text valign-wrapper">
+						<i class="material-icons action_plan_icon">check_circle</i>
+						<div class="card-title">Application is eligible, no action plan required</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NON-ELIGIBLE -->
+			<div ng-if="actionPlanStatus === 'NEL'">
+			    <div class="card red lighten-1">
+					<div class="card-content white-text valign-wrapper">
+						<i class="material-icons action_plan_icon">do_not_disturb_on</i>
+						<div class="card-title">Application is not eligible</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ELIGIBLE UNDER CONDITIONS -->
+			<div ng-if="actionPlanStatus === 'EUC'">
+			    <div class="card amber lighten-1">
+					<div class="card-content white-text valign-wrapper">
+						<i class="material-icons action_plan_icon">error</i>
+						<div class="card-title">Application is eligible under specific conditions</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

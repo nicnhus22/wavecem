@@ -15,6 +15,7 @@
   <!-- load angular and angular route via CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-animate.js"></script>
 
   <!-- Compiled and minified JavaScript -->
@@ -25,18 +26,32 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Style -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   
   <!-- Root JS file -->
   <script src="app.js"></script>
-  
+  <script src="routing.js"></script>
+
   <!-- Controllers -->
-  <script src="components/survey/surveyController.js"></script>
-  <script src="components/application/applicationController.js"></script>
-  <script src="components/applications/applicationsController.js"></script>
+  <script src="components/factory/helper.js"></script>
+  <script src="components/service/auth.js"></script>
+  <script src="components/service/authInterceptor.js"></script>
+  <script src="components/service/session.js"></script>
+
+  <script src="components/mainController.js"></script>
+  <script src="components/globalFunctions.js"></script>
+
+  <script src="components/domain/login/loginController.js"></script>
+  <script src="components/domain/survey/surveyController.js"></script>
+  <script src="components/domain/application/applicationController.js"></script>
+  <script src="components/domain/application/applicationActionPlanController.js"></script>
+  <script src="components/domain/applications/applicationsController.js"></script>
+
 
 </head>
-<body ng-controller="applicationsController">
+<body ng-controller="mainController">
 
     <!-- HEADER AND NAVBAR -->
     <header>
@@ -51,19 +66,17 @@
             </div>
         </nav>
     </header>
-
+    <!-- Welcome, {{ currentUser.username }} -->
+    
      <!-- MAIN CONTENT AND INJECTED VIEWS -->
     <div id="main" class="container">
 
         <!-- angular templating -->
         <!-- this is where content will be injected -->
-        <div ng-view>
+        <div ui-view></div>
 
-        </div>
     </div>
 
-     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 </html>
 

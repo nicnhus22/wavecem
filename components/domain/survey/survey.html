@@ -1,0 +1,96 @@
+<!-- home.html -->
+<div class="container-fluid" ng-controller="surveyController">
+	<h3 class="page_title">Edit my questions</h3>
+
+	<div class="row" style="margin-top:75px" >
+		<div class="col s10">
+		   <select ng-selected="categories[0]" ng-init="changeSelectedCategoryQuestions()" ng-options="category.name for category in categories" ng-model="selectedCategory" ng-change="changeSelectedCategoryQuestions()">
+		     <option value="" disabled>Choose filter</option>
+		   </select>
+		</div>
+		<a class="waves-effect waves-light btn-large right col s2" ng-click="addQuestion()">AJOUTER</a>
+	</div>
+
+	<table class="questions_table">
+		<tbody ng-repeat="(questionIndex, question) in questionsForCategory">
+			<tr style="border-left:5px {{ getHexColorForCategory(question.category) }} solid">
+				<td>
+					<table class="questions_table">
+						<tbody>
+							<tr><span class="new badge {{ getColorForCategory(question.category) }} left" data-badge-caption="{{ question.id }}"></span></tr>
+							<tr>
+								<td>
+									<div class="input-field col s12">
+							          <textarea id="question_{{question.id}}" class="materialize-textarea">{{ question.question }}</textarea>
+							          <label for="question_{{question.id}}" class="{{ question.question === '' ? '' : 'active'}}">Question</label>
+							        </div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-field col s12">
+							          <textarea id="action_if_no_{{question.id}}" class="materialize-textarea">{{ question.actionIfNo }}</textarea>
+							          <label for="action_if_no_{{question.id}}" class="{{ question.actionIfNo === '' ? '' : 'active'}}">Action if no</label>
+							        </div>
+								</td> 
+							</tr>
+							<tr>
+								<td>
+									<div class="input-field col s12">
+							          <textarea id="action_if_yes_{{question.id}}" class="materialize-textarea">{{ question.actionIfYes }}</textarea>
+							          <label for="action_if_yes_{{question.id}}" class="{{ question.actionIfYes === '' ? '' : 'active'}}">Action if yes</label>
+							        </div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-field col s12">
+							          <textarea id="action_if_unknown_{{question.id}}" class="materialize-textarea">{{ question.actionIfUnknown }}</textarea>
+							          <label for="action_if_unknown_{{question.id}}" class="{{ question.actionIfUnknown === '' ? '' : 'active'}}">Action if unknown</label>
+							        </div>
+								</td>
+							</tr>
+						</tbody>
+					</table> 
+				</td>
+			</tr>
+		</tbody>
+	</table> 
+
+	<!-- Modal Structure -->
+	<div id="addQuestionModal" class="modal bottom-sheet">
+		<div class="modal-content">
+			<div class="row">
+				<h4 style="margin-bottom:1em" class="col s10">Add question</h4>
+				<a class="waves-effect waves-light btn-large right col s2" ng-click="submitAddQuestion()">Submit</a>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input placeholder="" id="add_question_id" type="text" value="{{ addedQuestion.id }}" disabled>
+					<label for="add_question_id" class="active">Question ID</label>
+				</div>
+				<div class="input-field col s6">
+					<input placeholder="" id="add_question_category" type="text" value="{{ addedQuestion.category }}" disabled>
+					<label for="add_question_category" class="active">Question category</label>
+				</div>
+			</div>
+			
+			<div class="input-field col s12">
+				<input placeholder="" id="add_question_question" type="text" ng-model="addedQuestion.question" required>
+				<label for="add_question_question" class="left-align">What is the question ?</label>
+			</div>
+			<div class="input-field col s12">
+				<input placeholder="" id="add_question_action_if_no" type="text" ng-model="addedQuestion.actionIfNo">
+				<label for="add_question_action_if_no" class="left-align">What if answer is no ?</label>
+			</div>
+			<div class="input-field col s12">
+				<input placeholder="" id="add_question_action_if_yes" type="text" ng-model="addedQuestion.actionIfYes">
+				<label for="add_question_action_if_yes" class="left-align">What if answer is yes ?</label>
+			</div>
+			<div class="input-field col s12">
+				<input placeholder="" id="add_question_action_if_unknown" type="text" ng-model="addedQuestion.actionIfUnknown">
+				<label for="add_question_action_if_unknown" class="left-align">What if answer is unkown ?</label>
+			</div>
+		</div>
+	</div>
+</div>

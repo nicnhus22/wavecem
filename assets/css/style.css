@@ -251,4 +251,28 @@ td.reduced_border {
     padding: 5px 5px !important; 
 }
 
+.modal.bottom-sheet {
+    max-height:70%;
+}
+
+.input-field.col label.left-align {
+    left:0 !important;
+}
+
+span.action_plan_result {
+    font-size:30px;
+}
+
+i.action_plan_icon {
+    font-size: 60px;
+    margin-right: 20px;
+}
+
+.card-content .card-title {
+    margin-bottom: 0 !important;
+}
+
+
+
+
 

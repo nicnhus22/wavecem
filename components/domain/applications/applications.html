@@ -1,5 +1,5 @@
 <!-- home.html -->
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="applicationsController">
   <h3 class="page_title">applications</h3>
 
     <div class="overview_block row">
@@ -30,7 +30,7 @@
 			<input id="icon_prefix" type="text" class="validate" ng-model="searchKeyword">
 			<label for="icon_prefix">Search for an application or a status</label>
 	    </div>
-	    <a class="waves-effect waves-light btn-large right col s2">AJOUTER</a>
+	    <a class="waves-effect waves-light btn-large right col s2" ng-click="addApplication()">AJOUTER</a>
     </div>
     
     <table class="applications_table striped">
@@ -55,10 +55,10 @@
 				  <div ng-switch-when="ELI">
 				  	<span class="new badge green left" data-badge-caption="ELIGIBLE"></span>
 				  </div>
-				  <div ng-switch-when="TBC">
+				  <div ng-switch-when="NEL">
 				  	<span class="new badge red left" data-badge-caption="NON-ELIGIBLE"></span>
 				  </div>
-				  <div ng-switch-when="NEL">
+				  <div ng-switch-when="TBC">
 				  	<span class="new badge blue left" data-badge-caption="TO BE COMPLETED"></span>
 				  </div>
 				  <div ng-switch-default>
@@ -75,4 +75,20 @@
 		  </tr>
         </tbody>
     </table>  
+
+    <!-- Modal Structure -->
+	<div id="addApplicationModal" class="modal bottom-sheet">
+		<div class="modal-content">
+			<div class="row">
+				<h4 style="margin-bottom:1em" class="col s10">Add application</h4>
+				<a class="waves-effect waves-light btn-large right col s2" ng-click="submitAddApplication()">Submit</a>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input placeholder="Application name" id="add_application_name" type="text" value="{{ addedApplication.name }}"  ng-model="addedApplication.name">
+					<label for="add_application_name" class="active">Application name</label>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
