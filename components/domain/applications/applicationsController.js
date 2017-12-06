@@ -80,7 +80,7 @@ angular.module('waveCemApp').controller('applicationsController', function($scop
         Fetches all the applications
     **/
     $scope.fetchApplications = function() {
-         $http({method: 'GET', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/application'}).success(function(data) {
+        $http({method: 'GET', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/application'}).success(function(data) {
             $scope.applications = data.Items
             $scope.computeOverviewData();
         }).error(function(error){
@@ -89,3 +89,7 @@ angular.module('waveCemApp').controller('applicationsController', function($scop
     }
     $scope.fetchApplications();
 });
+
+
+
+

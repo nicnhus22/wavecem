@@ -66,6 +66,8 @@ angular.module('waveCemApp').controller('surveyController', function($scope, hel
     }];
     $scope.selectedCategory = $scope.categories[0]; // select first item
 
+
+
     // here fetch subquestions
     $scope.subQuestions = [{
     	id:"A-01-01",
@@ -125,6 +127,7 @@ angular.module('waveCemApp').controller('surveyController', function($scope, hel
     	category:"Contraintes projet"
     }];
 
+    
 
     /**
         Helper to increment string
@@ -137,7 +140,6 @@ angular.module('waveCemApp').controller('surveyController', function($scope, hel
         idToArray[2] = formattedNumber;
         return idToArray.join("-");
     }
-
 
 	/**
 		Map categories to colors

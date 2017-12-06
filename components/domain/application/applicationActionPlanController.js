@@ -3,8 +3,6 @@
 // create the controller and inject Angular's $scope
 angular.module('waveCemApp').controller('applicationActionPlanController', function($scope, $location) {
 
-
-	// here fetch subquestions
     $scope.actionPlanQuestions = [{
     	id:"A-01-01",
     	question:"Etes-vous sujets a des lois ou reglementations dans le cadre de votre projet (certifications ou auditabilite, donnees personnelles ou bancaires, applications du SIIV etc.) ?",
