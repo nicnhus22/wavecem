@@ -47,9 +47,6 @@ angular.module('waveCemApp').controller('applicationController', function($scope
                     $scope.subQuestions[categoryID] = [subQuestion];
                 }
             });
-
-
-            
         }).error(function(error){
             // handle error
         });
