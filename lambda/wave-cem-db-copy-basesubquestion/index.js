@@ -40,7 +40,6 @@ exports.handler = function index(e, context, callback) {
         } else {
             ddb.waitFor('tableExists', {TableName:'BaseQuestion-'+clientID}, function(err, data) {
                 copy({
-                    config: globalAWSConfig,
                     source: {
                         tableName: 'BaseQuestion', // required 
                     },
