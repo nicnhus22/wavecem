@@ -22,6 +22,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
 
+  <!-- Cognito -->
+  <script src="assets/libs/cognito/aws-cognito-sdk.min.js"></script>
+  <script src="assets/libs/cognito/amazon-cognito-identity.min.js"></script>
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -39,6 +42,9 @@
   <script src="components/service/auth.js"></script>
   <script src="components/service/authInterceptor.js"></script>
   <script src="components/service/session.js"></script>
+
+  <script src="components/service/applicationService.js"></script>
+  <script src="components/service/questionService.js"></script>
 
   <script src="components/mainController.js"></script>
   <script src="components/globalFunctions.js"></script>
@@ -61,7 +67,7 @@
                 <ul class="right hide-on-med-and-down">
                   <li id="nav_applications"><a href="#"><i class="material-icons left">view_module</i>Applications</a></li>
                   <li id="nav_survey"><a href="#survey"><i class="material-icons right">chrome_reader_mode</i>Survey</a></li>
-                  <li><a href="#signout"><i class="material-icons right">exit_to_app</i>Signout</a></li>
+                  <li><a href="#signout" ng-click="logout()"><i class="material-icons right">exit_to_app</i>Signout</a></li>
                 </ul>
             </div>
         </nav>

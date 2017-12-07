@@ -1,17 +1,17 @@
 {
     "users": {
-        "admin": {
-            "username": "admin",
+        "admin@gmail.com": {
+            "email": "admin@gmail.com",
             "password": "admin",
             "userRole": "admin"
         },
-        "editor": {
-            "username": "editor",
+        "editor@gmail.com": {
+            "email": "editor@gmail.com",
             "password": "editor",
             "userRole": "editor"
         },
-        "guest": {
-            "username": "guest",
+        "guest@gmail.com": {
+            "email": "guest@gmail.com",
             "password": "guest",
             "userRole": "guest"
         }

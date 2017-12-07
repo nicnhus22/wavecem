@@ -6,15 +6,16 @@ waveCemApp.factory('Auth', [ '$http', '$rootScope', '$window', 'Session', 'AUTH_
         
         //the login function
         authService.login = function(user, success, error) {
-            $http.post('misc/users.json').success(function(data) {
+
+            $http.post('components/users.json').success(function(data) {
             
             //this is my dummy technique, normally here the 
             //user is returned with his data from the db
             var users = data.users;
-            if(users[user.username]){
-                var loginData = users[user.username];
+            if(users[user.email]){
+                var loginData = users[user.email];
                 //insert your custom login function here 
-                if(user.username == loginData.username && user.password == loginData.username){
+                if(user.email == loginData.email && user.password == loginData.password){
                     //set the browser session, to avoid relogin on refresh
                     $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
                     
@@ -23,7 +24,7 @@ waveCemApp.factory('Auth', [ '$http', '$rootScope', '$window', 'Session', 'AUTH_
                     
                     //update current user into the Session service or $rootScope.currentUser
                     //whatever you prefer
-                    //Session.create(loginData);
+                    Session.create(loginData);
                     //or
                     $rootScope.currentUser = loginData;
                     

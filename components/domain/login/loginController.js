@@ -1,5 +1,8 @@
-angular.module('waveCemApp').controller('LoginCtrl', [ '$scope', '$state', '$modalInstance' , '$window', 'Auth', 
-function($scope, $state, $modalInstance, $window, Auth ) {
+angular.module('waveCemApp').controller('loginController', [ '$scope', '$state','$rootScope',  '$window', 'Auth', 
+function($scope, $state,$rootScope, $window, Auth ) {
+
+	$rootScope.hideNavBarControls();
+
 	$scope.credentials = {};
 	$scope.loginForm = {};
 	$scope.error = false;
@@ -7,7 +10,8 @@ function($scope, $state, $modalInstance, $window, Auth ) {
 	//when the form is submitted
 	$scope.submit = function() {
 		$scope.submitted = true;
-		if (!$scope.loginForm.$invalid) {
+		// do better checks
+		if (typeof $scope.credentials.email != 'undefined' && typeof $scope.credentials.password != 'undefined') {
 			$scope.login($scope.credentials);
 		} else {
 			$scope.error = true;
@@ -19,8 +23,7 @@ function($scope, $state, $modalInstance, $window, Auth ) {
 	$scope.login = function(credentials) {
 		$scope.error = false;
 		Auth.login(credentials, function(user) {
-			//success function
-			$modalInstance.close();
+			$rootScope.showNavBarControls();
 			$state.go('home');
 		}, function(err) {
 			console.log("error");
@@ -34,5 +37,7 @@ function($scope, $state, $modalInstance, $window, Auth ) {
 		var credentials = JSON.parse($window.sessionStorage["userInfo"]);
 		$scope.login(credentials);
 	}
+
+
 
 } ]);

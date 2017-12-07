@@ -1,14 +1,14 @@
 /**
  * Contains functions that are added to the root AngularJs scope.
  */
-waveCemApp.run(function($rootScope, $state, $transitions, Auth, AUTH_EVENTS) {
+waveCemApp.run(function($rootScope, $state, $transitions, $location, Auth, AUTH_EVENTS) {
 	
 	//before each state change, check if the user is logged in
 	//and authorized to move onto the next state
 	$transitions.onSuccess({}, function(transition) {
 		var authorizedRoles = transition.to().data.authorizedRoles;
 			if (!Auth.isAuthorized(authorizedRoles)) {
-				console.log("not authorized")
+				$location.path('/login');
 				event.preventDefault();
 			if (Auth.isAuthenticated()) {
 				// user is not allowed
@@ -33,6 +33,14 @@ waveCemApp.run(function($rootScope, $state, $transitions, Auth, AUTH_EVENTS) {
 		} else {
 			return "";
 		}
+	}
+
+	$rootScope.hideNavBarControls = function(path) {
+		$("ul.right").hide(); // remove controls
+	}
+
+	$rootScope.showNavBarControls = function(path) {
+		$("ul.right").show(); // remove controls
 	}
 	
 	$rootScope.logout = function(){

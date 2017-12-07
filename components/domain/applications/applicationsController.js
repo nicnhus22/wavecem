@@ -1,33 +1,29 @@
 
 // create the controller and inject Angular's $scope
-angular.module('waveCemApp').controller('applicationsController', function($scope, $location, $http, helperFactory) {
+angular.module('waveCemApp').controller('applicationsController', function($scope, $location, $http, helperFactory, applicationService) {
         
+    // setup view 
+    $("#nav_survey").removeClass("active");
+    $("#nav_applications").addClass("active");
 
     angular.element(document).ready(function () {
     	$('select').material_select();
         $('.modal').modal();
     });
 
+    // watch variables
     $scope.$watch('applications', function() {
-        $scope.computeOverviewData()
+        // $scope.computeOverviewData()
     }, true);
     $scope.addedApplication = {
     	status:"TBC",
     	progress:0
     };
 
-    // setup nav
-    $("#nav_survey").removeClass("active");
-    $("#nav_applications").addClass("active");
-
-
-
-    $http({method: 'POST', data: JSON.stringify({name:"BPCE"}), url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/client'}).success(function(data) {
-        $scope.applications.push(data);
-        $('#addApplicationModal').modal('close');
-        // notification maybe ?
-    }).error(function(error){
-        // handle error
+    // fetch applications
+    applicationService.getAll().then(function (response) {
+        $scope.applications = response.data.Items;
+        $scope.computeOverviewData();
     });
 
     // route 
@@ -36,7 +32,7 @@ angular.module('waveCemApp').controller('applicationsController', function($scop
     }
 
     $scope.computeOverviewData = function() {
-        if($scope.applications.length != 0) {
+        if(typeof $scope.applications != 'undefined') {
             $scope.overviewData = {all:0,eli:0,euc:0,nel:0,tbc:0}
             $scope.applications.forEach(function(application) {
                 switch(application.status) {
@@ -62,14 +58,14 @@ angular.module('waveCemApp').controller('applicationsController', function($scop
         When the user clicks submit application
     **/
     $scope.submitAddApplication = function() {
-
         if($scope.addedApplication.application != "") {
-            $http({method: 'POST', data: JSON.stringify($scope.addedApplication), url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/application'}).success(function(data) {
-                $scope.applications.push(data);
-                $('#addApplicationModal').modal('close');
-                // notification maybe ?
-            }).error(function(error){
-                // handle error
+            applicationService.create($scope.addedApplication).then(function (response) {
+                if(response.data) {
+                    $scope.applications.push(response.data);
+                    $('#addApplicationModal').modal('close');
+                } else {
+                    // show error
+                }
             });
         } else {
             // show error
@@ -88,12 +84,7 @@ angular.module('waveCemApp').controller('applicationsController', function($scop
         Fetches all the applications
     **/
     $scope.fetchApplications = function() {
-        $http({method: 'GET', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/application'}).success(function(data) {
-            $scope.applications = data.Items
-            $scope.computeOverviewData();
-        }).error(function(error){
-            // handle error
-        });
+        
     }
     $scope.fetchApplications();
 });
