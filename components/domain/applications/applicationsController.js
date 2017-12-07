@@ -22,7 +22,13 @@ angular.module('waveCemApp').controller('applicationsController', function($scop
 
 
 
-    
+    $http({method: 'POST', data: JSON.stringify({name:"BPCE"}), url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/client'}).success(function(data) {
+        $scope.applications.push(data);
+        $('#addApplicationModal').modal('close');
+        // notification maybe ?
+    }).error(function(error){
+        // handle error
+    });
 
     // route 
     $scope.viewApplication = function(application) {
@@ -30,24 +36,26 @@ angular.module('waveCemApp').controller('applicationsController', function($scop
     }
 
     $scope.computeOverviewData = function() {
-        $scope.overviewData = {all:0,eli:0,euc:0,nel:0,tbc:0}
-        $scope.applications.forEach(function(application) {
-            switch(application.status) {
-                case "ELI":
-                    $scope.overviewData.eli += 1;
-                    break;
-                case "EUC":
-                    $scope.overviewData.euc += 1;
-                    break;
-                case "NEL":
-                    $scope.overviewData.nel += 1;
-                    break;
-                case "TBC":
-                    $scope.overviewData.tbc += 1;
-                    break;
-            }
-            $scope.overviewData.all += 1;
-        });
+        if($scope.applications.length != 0) {
+            $scope.overviewData = {all:0,eli:0,euc:0,nel:0,tbc:0}
+            $scope.applications.forEach(function(application) {
+                switch(application.status) {
+                    case "ELI":
+                        $scope.overviewData.eli += 1;
+                        break;
+                    case "EUC":
+                        $scope.overviewData.euc += 1;
+                        break;
+                    case "NEL":
+                        $scope.overviewData.nel += 1;
+                        break;
+                    case "TBC":
+                        $scope.overviewData.tbc += 1;
+                        break;
+                }
+                $scope.overviewData.all += 1;
+            });
+        }        
     }
 
     /**

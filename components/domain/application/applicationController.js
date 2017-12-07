@@ -20,11 +20,14 @@ angular.module('waveCemApp').controller('applicationController', function($scope
         Fetches all the base questions
     **/
     $scope.fetchBaseQuestions = function() {
-        $http({method: 'GET', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basequestion'}).success(function(data) {
-            $scope.mandatoryQuestions = data.Items
-            $scope.fetchSubQuestions();
+        $http({method: 'POST', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basequestion'}).success(function(data) {
+            $http({method: 'POST', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basesubquestion'}).success(function(data) {
+                console.log(data);
+            }).error(function(error){
+                console.log(error);
+            });
         }).error(function(error){
-            // handle error
+            console.log(error);
         });
     }
     $scope.fetchBaseQuestions();
@@ -51,7 +54,7 @@ angular.module('waveCemApp').controller('applicationController', function($scope
             // handle error
         });
     }
-    // need to calls to get answers
+    // need calls to get answers
 
 
     // $scope.subQuestions = [{

@@ -28,7 +28,6 @@ waveCemApp.controller('mainController', ['$scope', '$rootScope', 'Auth', 'AUTH_E
 		$rootScope.$on(AUTH_EVENTS.sessionTimeout, showLoginDialog);
 		$rootScope.$on(AUTH_EVENTS.logoutSuccess, showLoginDialog);
 		$rootScope.$on(AUTH_EVENTS.loginSuccess, setCurrentUser);
-
 }]);
 
 waveCemApp.directive('permission', ['Auth', function(Auth) {
