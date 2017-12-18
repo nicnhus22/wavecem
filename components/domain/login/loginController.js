@@ -1,10 +1,9 @@
-angular.module('waveCemApp').controller('loginController', [ '$scope', '$state','$rootScope',  '$window', 'Auth', 
-function($scope, $state,$rootScope, $window, Auth ) {
+angular.module('waveCemApp').controller('loginController', [ '$scope', '$state','$rootScope','$location', '$window', 'Auth',
+function($scope, $state,$rootScope,$location, $window, Auth ) {
 
-	$rootScope.hideNavBarControls();
+	// $rootScope.hideNavBarControls();
 
 	$scope.credentials = {};
-	$scope.loginForm = {};
 	$scope.error = false;
 	
 	//when the form is submitted
@@ -26,11 +25,10 @@ function($scope, $state,$rootScope, $window, Auth ) {
 			$rootScope.showNavBarControls();
 			$state.go('home');
 		}, function(err) {
-			console.log("error");
 			$scope.error = true;
 		});
 	};
-	
+
 	// if a session exists for current user (page was refreshed)
 	// log him in again
 	if ($window.sessionStorage["userInfo"]) {

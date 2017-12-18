@@ -1,6 +1,7 @@
+'use strict';
 
 // create the controller and inject Angular's $scope
-waveCemApp.controller('mainController', ['$scope', '$rootScope', 'Auth','Session', 'AUTH_EVENTS','USER_ROLES',
+waveCemApp.controller('mainController', ['$scope', '$rootScope', '$location', 'Auth','Session', 'AUTH_EVENTS','USER_ROLES',
 	function($scope, $rootScope, $location, Auth, Session, AUTH_EVENTS, USER_ROLES){
 		// this is the parent controller for all controllers.
 		// Manages auth login functions and each controller
@@ -23,15 +24,15 @@ waveCemApp.controller('mainController', ['$scope', '$rootScope', 'Auth','Session
 		$scope.isAuthorized = Auth.isAuthorized;
 
 		//listen to events of unsuccessful logins, to run the login dialog
+		
+
 		$rootScope.$on(AUTH_EVENTS.notAuthorized, showNotAuthorized);
 		$rootScope.$on(AUTH_EVENTS.notAuthenticated, showLoginDialog);
 		$rootScope.$on(AUTH_EVENTS.sessionTimeout, showLoginDialog);
 		$rootScope.$on(AUTH_EVENTS.logoutSuccess, showLoginDialog);
 		$rootScope.$on(AUTH_EVENTS.loginSuccess, setCurrentUser);
 
-		$scope.logout = function() {
-			return $rootScope.logout();
-		}
+		
 }]);
 
 waveCemApp.directive('permission', ['Auth', function(Auth) {

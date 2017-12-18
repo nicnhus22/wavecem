@@ -1,6 +1,6 @@
 
-waveCemApp.factory('Auth', [ '$http', '$rootScope', '$window', 'Session', 'AUTH_EVENTS', 
-    function($http, $rootScope, $window, Session, AUTH_EVENTS) {
+waveCemApp.factory('Auth', [ '$http', '$rootScope','$location', '$window', 'Session', 'AUTH_EVENTS', 'USER_ROLES', 
+    function($http, $rootScope,$location, $window, Session, AUTH_EVENTS, USER_ROLES) {
         var authService = {};
         
         
@@ -29,7 +29,7 @@ waveCemApp.factory('Auth', [ '$http', '$rootScope', '$window', 'Session', 'AUTH_
                     $rootScope.currentUser = loginData;
                     
                     //fire event of successful login
-                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                    $rootScope.$emit(AUTH_EVENTS.loginSuccess);
                     //run success function
                     success(loginData);
                 } else{
@@ -53,18 +53,27 @@ waveCemApp.factory('Auth', [ '$http', '$rootScope', '$window', 'Session', 'AUTH_
         //this function can be also used on element level
         //e.g. <p ng-if="isAuthorized(authorizedRoles)">show this only to admins</p>
         authService.isAuthorized = function(authorizedRoles) {
-            if (!angular.isArray(authorizedRoles)) {
-              authorizedRoles = [authorizedRoles];
+            
+            if(authorizedRoles.indexOf(USER_ROLES.all) > -1) {
+                return true;
+            } else {
+                if (!angular.isArray(authorizedRoles)) {
+                  authorizedRoles = [authorizedRoles];
+                }
+
+                return (authService.isAuthenticated() &&
+                  authorizedRoles.indexOf(Session.userRole) !== -1);
             }
-            return (authService.isAuthenticated() &&
-              authorizedRoles.indexOf(Session.userRole) !== -1);
+            
         };
         
         //log out the user and broadcast the logoutSuccess event
         authService.logout = function(){
             Session.destroy();
             $window.sessionStorage.removeItem("userInfo");
-            $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
+            // $rootScope.$emit(AUTH_EVENTS.logoutSuccess); because not working ??
+            $rootScope.hideNavBarControls();
+            $location.path('/login');
         }
 
         return authService;

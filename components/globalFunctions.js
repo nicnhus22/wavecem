@@ -36,11 +36,11 @@ waveCemApp.run(function($rootScope, $state, $transitions, $location, Auth, AUTH_
 	}
 
 	$rootScope.hideNavBarControls = function(path) {
-		$("ul.right").hide(); // remove controls
+		$("header").hide(); // remove controls
 	}
 
 	$rootScope.showNavBarControls = function(path) {
-		$("ul.right").show(); // remove controls
+		$("header").show(); // remove controls
 	}
 	
 	$rootScope.logout = function(){

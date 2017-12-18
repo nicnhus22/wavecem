@@ -1,7 +1,7 @@
 
 // create the controller and inject Angular's $scope
-angular.module('waveCemApp').controller('applicationsController', function($scope, $location, $http, helperFactory, applicationService) {
-        
+angular.module('waveCemApp').controller('applicationsController', function($scope, $location, $http, helperFactory, applicationService, clientService) {
+
     // setup view 
     $("#nav_survey").removeClass("active");
     $("#nav_applications").addClass("active");

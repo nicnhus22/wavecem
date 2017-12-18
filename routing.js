@@ -6,6 +6,14 @@ waveCemApp.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
 
     // Now set up the states
     $stateProvider
+    .state('home', {
+          url: "/",
+          templateUrl: "components/domain/applications/applications.html",
+          controller:"applicationsController",
+          data: {
+              authorizedRoles: [USER_ROLES.admin]
+          }
+    })
     .state('login', {
           url: "/login",
           templateUrl: "components/domain/login/login.html",
@@ -14,12 +22,12 @@ waveCemApp.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
               authorizedRoles: []
           }
     })
-    .state('home', {
-          url: "/",
-          templateUrl: "components/domain/applications/applications.html",
-          controller:"applicationsController",
+    .state('signup', {
+          url: "/signup",
+          templateUrl: "components/domain/signup/signup.html",
+          controller:"signupController",
           data: {
-              authorizedRoles: [USER_ROLES.admin]
+              authorizedRoles: [USER_ROLES.all]
           }
     })
     .state('application', {

@@ -16,13 +16,18 @@ waveCemApp.service('questionService', function($http) {
     }
 
     this.copyBaseQuestionTable = function() {
-
+        return $http({method: 'POST', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basequestion'})
+                .success(handleSuccess)
+                .error(handleError);
     }
 
-    
-
+    /**
+    **/
     this.copyBaseSubQuestionTable = function() {
-
+        // copy base sub questions
+        $http({method: 'POST', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basesubquestion'})
+                .success(handleSuccess)
+                .error(handleError);
     }
 
     // private functions
