@@ -1,16 +1,16 @@
 'use strict';
 
 
-waveCemApp.service('applicationService', function($http) {
+waveCemApp.service('applicationService', function($http, API_ROUTES) {
 
     this.getAll = function() {
-        return $http({method: 'GET', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/application'})
+        return $http({method: 'GET', url: API_ROUTES.BASE_URL+API_ROUTES.APPLICATIONS})
         		.success(handleSuccess)
         		.error(handleError);
     }
 
     this.create = function(application) {
-        return $http({method: 'POST', data: JSON.stringify(application), url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/application'})
+        return $http({method: 'POST', data: JSON.stringify(application), url: API_ROUTES.BASE_URL+API_ROUTES.APPLICATIONS})
 		    	.success(handleSuccess)
 		    	.error(handleError);
     }

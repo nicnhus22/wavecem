@@ -1,22 +1,22 @@
 'use strict';
 
 
-waveCemApp.service('questionService', function($http) {
+waveCemApp.service('questionService', function($http, API_ROUTES) {
 
     this.getBaseQuestions = function() {
-        return $http({method: 'GET', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basequestion'})
+        return $http({method: 'GET', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_QUESTIONS})
         		.success(handleSuccess)
         		.error(handleError);
     }
 
     this.getBaseSubQuestions = function() {
-        return $http({method: 'GET', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basesubquestion'})
+        return $http({method: 'GET', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_SUB_QUESTIONS})
                 .success(handleSuccess)
                 .error(handleError);
     }
 
     this.copyBaseQuestionTable = function() {
-        return $http({method: 'POST', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basequestion'})
+        return $http({method: 'POST', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_QUESTIONS})
                 .success(handleSuccess)
                 .error(handleError);
     }
@@ -25,7 +25,7 @@ waveCemApp.service('questionService', function($http) {
     **/
     this.copyBaseSubQuestionTable = function() {
         // copy base sub questions
-        $http({method: 'POST', url: 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev/basesubquestion'})
+        $http({method: 'POST', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_SUB_QUESTIONS})
                 .success(handleSuccess)
                 .error(handleError);
     }

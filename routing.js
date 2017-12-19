@@ -50,7 +50,14 @@ waveCemApp.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
 
 // static API routes
 waveCemApp.constant('API_ROUTES', {
-    base_url : 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev',
-    application : '/application',
-    basequestion : '/basequestion'
+
+    BASE_URL : 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev',
+    
+    APPLICATIONS        : '/applications',
+    
+    BASE_QUESTIONS      : '/basequestions',
+    BASE_SUB_QUESTIONS  : '/basesubquestions',
+
+    CLIENTS             : '/clients'
+    
 })
