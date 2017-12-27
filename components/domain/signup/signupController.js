@@ -12,14 +12,17 @@ angular.module('waveCemApp').controller('signupController', function($scope, $lo
     // init - steps
     $scope.firstStep = {
         label: "Step 1 - Create user",
+        errorMessage: "",
         state: State.PENDING
     }
     $scope.secondStep = {
         label: "Step 2 - Setting up account",
+        errorMessage: "",
         state: State.PENDING
     }
     $scope.thirdStep = {
         label: "Step 3 - Generating surveys",
+        errorMessage: "",
         state: State.PENDING
     }
 
@@ -66,15 +69,17 @@ angular.module('waveCemApp').controller('signupController', function($scope, $lo
 
                             } else {
                                 $scope.thirdStep.state  = State.FAILED;
+                                $scope.thirdStep.errorMessage = response.data.errorMessage;
                             }
                         });
                     } else {
                         $scope.secondStep.state  = State.FAILED;
-                        $scope.secondStep.label += response.data.errorMessage;
+                        $scope.secondStep.errorMessage = response.data.errorMessage;
                     }
                 });
             } else {
                 $scope.firstStep.state  = State.FAILED;
+                $scope.firstStep.errorMessage = response.data.errorMessage;
             }
         });
 

@@ -278,7 +278,7 @@ i.action_plan_icon {
 
 
 .login_container {
-    width:45% !important;
+    width:60% !important;
 }
 
 .input-field input[type=date]:focus + label,
@@ -330,6 +330,7 @@ button[name='btn_login'] {
 }
 
 .signup_step {
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -342,6 +343,12 @@ button[name='btn_login'] {
     text-transform: uppercase;
     font-weight: bolder;
     color:#80cbc4;
+}
+
+.register_step_label_error {
+    display: block;
+    font-size: small;
+    color:#e57373;
 }
 
 .relative { 

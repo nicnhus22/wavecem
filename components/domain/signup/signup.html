@@ -7,6 +7,9 @@
             <!-- Loading panel -->
             <div id="loading_overlay" class="grey lighten-4">
 
+               <h5>We are setting up your account</h5>
+               <h6>This may take few minutes</h6>
+
                <!-- STEP 1 -->
                <div class='grid signup_step'>
                   <div class="steps_icon">
@@ -36,7 +39,10 @@
                      </div>
                   </div>
                   <div class="steps_label relative">
-                     <div class="register_step_label" ng-class="{'pending': firstStep.state == 'PENDING','completed': firstStep.state == 'COMPLETED','failed': firstStep.state == 'FAILED','in_progress': firstStep.state == 'IN_PROGRESS'}">{{firstStep.label}}</div>
+                     <div class="register_step_label" ng-class="{'pending': firstStep.state == 'PENDING','completed': firstStep.state == 'COMPLETED','failed': firstStep.state == 'FAILED','in_progress': firstStep.state == 'IN_PROGRESS'}">
+                        {{firstStep.label}}
+                        <span class="register_step_label_error">{{firstStep.errorMessage}}</span>
+                     </div>
                   </div>
                </div>
 
@@ -69,7 +75,10 @@
                      </div>
                   </div>
                   <div class="steps_label relative">
-                     <div class="register_step_label" ng-class="{'pending': secondStep.state == 'PENDING','completed': secondStep.state == 'COMPLETED','failed': secondStep.state == 'FAILED','in_progress': secondStep.state == 'IN_PROGRESS'}">{{secondStep.label}}</div>
+                     <div class="register_step_label" ng-class="{'pending': secondStep.state == 'PENDING','completed': secondStep.state == 'COMPLETED','failed': secondStep.state == 'FAILED','in_progress': secondStep.state == 'IN_PROGRESS'}">
+                        {{secondStep.label}}
+                        <span class="register_step_label_error">{{secondStep.errorMessage}}</span>
+                     </div>
                   </div>
                </div>
 
@@ -102,7 +111,10 @@
                      </div>
                   </div>
                   <div class="steps_label relative">
-                     <div class="register_step_label" ng-class="{'pending': thirdStep.state == 'PENDING','completed': thirdStep.state == 'COMPLETED','failed': thirdStep.state == 'FAILED','in_progress': thirdStep.state == 'IN_PROGRESS'}">{{thirdStep.label}}</div>
+                     <div class="register_step_label" ng-class="{'pending': thirdStep.state == 'PENDING','completed': thirdStep.state == 'COMPLETED','failed': thirdStep.state == 'FAILED','in_progress': thirdStep.state == 'IN_PROGRESS'}">
+                        {{thirdStep.label}}
+                        <span class="register_step_label_error">{{thirdStep.errorMessage}}</span>
+                     </div>
                   </div>
                </div>
             </div>
