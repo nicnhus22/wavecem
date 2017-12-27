@@ -47,4 +47,6 @@ waveCemApp.run(function($rootScope, $state, $transitions, $location, Auth, AUTH_
 		Auth.logout();
 	};
 
+	$rootScope.loading = false;
+
 });

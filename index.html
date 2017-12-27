@@ -28,6 +28,7 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
@@ -54,6 +55,10 @@
 
      <!-- MAIN CONTENT AND INJECTED VIEWS -->
     <div id="main" class="container">
+
+        <div class="loading_overlay loader-inner ball-pulse" ng-show="loading">
+          <div></div><div></div><div></div>
+        </div>
 
         <!-- angular templating -->
         <!-- this is where content will be injected -->

@@ -1,7 +1,7 @@
 
 
 // create the controller and inject Angular's $scope
-angular.module('waveCemApp').controller('applicationController', function($scope, $http, $stateParams, helperFactory, questionService, API_ROUTES) {
+angular.module('waveCemApp').controller('applicationController', function($scope, $rootScope, $http, $stateParams, helperFactory, questionService, API_ROUTES) {
 
 	// initialize
 	$('ul.tabs').tabs();
@@ -17,6 +17,7 @@ angular.module('waveCemApp').controller('applicationController', function($scope
 
 
     // get base questions
+    $rootScope.loading = true;
     questionService.getBaseQuestions().then(function (response) {
         if(typeof response.data != 'undefined') {
             $scope.mandatoryQuestions = response.data.Items;
@@ -36,6 +37,7 @@ angular.module('waveCemApp').controller('applicationController', function($scope
                             $scope.subQuestions[categoryID] = [subQuestion];
                         }
                     });  
+                    $rootScope.loading = false;
                 } 
             });
         } 

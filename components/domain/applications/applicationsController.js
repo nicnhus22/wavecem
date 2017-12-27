@@ -1,6 +1,6 @@
 
 // create the controller and inject Angular's $scope
-angular.module('waveCemApp').controller('applicationsController', function($scope, $location, $http, helperFactory, applicationService, clientService) {
+angular.module('waveCemApp').controller('applicationsController', function($scope,$rootScope, $location, $http, helperFactory, applicationService, clientService) {
 
     // setup view 
     $("#nav_survey").removeClass("active");
@@ -21,9 +21,11 @@ angular.module('waveCemApp').controller('applicationsController', function($scop
     };
 
     // fetch applications
+    $rootScope.loading = true;
     applicationService.getAll().then(function (response) {
         $scope.applications = response.data.Items;
         $scope.computeOverviewData();
+        $rootScope.loading = false;
     });
 
     // route 

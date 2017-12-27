@@ -33,6 +33,8 @@ waveCemApp.controller('mainController', ['$scope', '$rootScope', '$location', 'A
 		$rootScope.$on(AUTH_EVENTS.loginSuccess, setCurrentUser);
 
 		
+
+		
 }]);
 
 waveCemApp.directive('permission', ['Auth', function(Auth) {

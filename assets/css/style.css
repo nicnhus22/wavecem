@@ -278,7 +278,7 @@ i.action_plan_icon {
 
 
 .login_container {
-    width:60% !important;
+    width:500px !important;
 }
 
 .input-field input[type=date]:focus + label,
@@ -365,9 +365,21 @@ button[name='btn_login'] {
     margin-bottom: 10px !important;
 }
 
+.loading_overlay {
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255,255,255,0.9);
+    z-index: 1000000;
+    text-align: center;
+    padding-top: 25%;
+}
 
-
-
+.ball-pulse-sync>div, .ball-pulse>div, .ball-scale>div {
+    background-color: #ee6e73;
+}
 
 
 
