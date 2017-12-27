@@ -53,11 +53,15 @@ waveCemApp.constant('API_ROUTES', {
 
     BASE_URL : 'https://nlkga26uzc.execute-api.eu-west-1.amazonaws.com/dev',
     
-    APPLICATIONS        : '/applications',
+    APPLICATIONS            : '/applications',
     
-    BASE_QUESTIONS      : '/basequestions',
-    BASE_SUB_QUESTIONS  : '/basesubquestions',
+    BASE_QUESTIONS          : '/basequestions',
+    BASE_QUESTIONS_COPY     : '/basequestions/copy',
 
-    CLIENTS             : '/clients'
+    BASE_SUB_QUESTIONS      : '/basesubquestions',
+    BASE_SUB_QUESTIONS_COPY : '/basesubquestions/copy',
+
+    CLIENTS                 : '/clients',
+    CLIENTS_REGISTER        : '/clients/register'
     
 })

@@ -3,7 +3,110 @@
    <center>
       <img class="responsive-img" style="width: 250px;margin-bottom:50px;" src="assets/img/logo_wavestone.png" />
       <div class="container login_container">
-         <div class="z-depth-1 grey lighten-4 row" style="padding: 30px 50px 25px 50px; border: 1px solid #EEE;">
+         <div class="z-depth-1 grey lighten-4 row" style="padding: 30px 50px 25px 50px; border: 1px solid #EEE;position:relative;">
+            <!-- Loading panel -->
+            <div id="loading_overlay" class="grey lighten-4">
+
+               <!-- STEP 1 -->
+               <div class='grid'>
+                  <div class="steps_icon">
+                     <div ng-if="stateFirstStep == 'PENDING'">
+                       <i class="material-icons medium pending">lens</i>
+                     </div>
+                     <div ng-if="stateFirstStep == 'IN_PROGRESS'">
+                        <div class="preloader-wrapper active">
+                           <div class="spinner-layer spinner-blue-only">
+                              <div class="circle-clipper left">
+                                 <div class="circle"></div>
+                              </div>
+                              <div class="gap-patch">
+                                 <div class="circle"></div>
+                              </div>
+                              <div class="circle-clipper right">
+                                 <div class="circle"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div ng-if="stateFirstStep == 'COMPLETED'">
+                        <i class="material-icons medium completed">check_circle</i>
+                     </div>
+                     <div ng-if="stateFirstStep == 'FAILED'">
+                        <i class="material-icons medium failed">remove_circle</i>
+                     </div>
+                  </div>
+                  <div class="steps_label relative">
+                     <div class="register_step_label" ng-class="{'pending': stateFirstStep == 'PENDING','completed': stateFirstStep == 'COMPLETED','failed': stateFirstStep == 'FAILED','in_progress': stateFirstStep == 'IN_PROGRESS'}">Step 1 - Creating user</div>
+                  </div>
+               </div>
+
+               <!-- STEP 2 -->
+               <div class='grid'>
+                  <div class="steps_icon">
+                     <div ng-if="stateSecondStep == 'PENDING'">
+                       <i class="material-icons medium pending">lens</i>
+                     </div>
+                     <div ng-if="stateSecondStep == 'IN_PROGRESS'">
+                        <div class="preloader-wrapper active">
+                           <div class="spinner-layer spinner-blue-only">
+                              <div class="circle-clipper left">
+                                 <div class="circle"></div>
+                              </div>
+                              <div class="gap-patch">
+                                 <div class="circle"></div>
+                              </div>
+                              <div class="circle-clipper right">
+                                 <div class="circle"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div ng-if="stateSecondStep == 'COMPLETED'">
+                        <i class="material-icons medium completed">check_circle</i>
+                     </div>
+                     <div ng-if="stateSecondStep == 'FAILED'">
+                        <i class="material-icons medium failed">remove_circle</i>
+                     </div>
+                  </div>
+                  <div class="steps_label relative">
+                     <div class="register_step_label" ng-class="{'pending': stateSecondStep == 'PENDING','completed': stateSecondStep == 'COMPLETED','failed': stateSecondStep == 'FAILED','in_progress': stateSecondStep == 'IN_PROGRESS'}">Step 2 - Setting up account</div>
+                  </div>
+               </div>
+
+               <!-- STEP 3 -->
+               <div class='grid'>
+                  <div class="steps_icon">
+                     <div ng-if="stateThirdStep == 'PENDING'">
+                       <i class="material-icons medium pending">lens</i>
+                     </div>
+                     <div ng-if="stateThirdStep == 'IN_PROGRESS'">
+                        <div class="preloader-wrapper active">
+                           <div class="spinner-layer spinner-blue-only">
+                              <div class="circle-clipper left">
+                                 <div class="circle"></div>
+                              </div>
+                              <div class="gap-patch">
+                                 <div class="circle"></div>
+                              </div>
+                              <div class="circle-clipper right">
+                                 <div class="circle"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div ng-if="stateThirdStep == 'COMPLETED'">
+                        <i class="material-icons medium completed">check_circle</i>
+                     </div>
+                     <div ng-if="stateThirdStep == 'FAILED'">
+                        <i class="material-icons medium failed">remove_circle</i>
+                     </div>
+                  </div>
+                  <div class="steps_label relative">
+                     <div class="register_step_label" ng-class="{'pending': stateThirdStep == 'PENDING','completed': stateThirdStep == 'COMPLETED','failed': stateThirdStep == 'FAILED','in_progress': stateThirdStep == 'IN_PROGRESS'}">Step 3 - Generating surveys</div>
+                  </div>
+               </div>
+            </div>
+
             <form class="col s12" method="post">
                <div class='row'>
                   <div class='col s12'>
@@ -36,16 +139,12 @@
                <br />
                <center>
                   <div class='row'>
-                     <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' ng-click="submit()" >Create account</button>
+                     <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' ng-click="submit()">Create account</button>
                   </div>
                </center>
             </form>
          </div>
       </div>
       <a href="#login">Already have an account ?</a>
-      <div class="progress">
-         <div class="indeterminate"></div>
-      </div>
-      <div class="step_name">CREATING CLIENT</div>
    </center>
 </main>

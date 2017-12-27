@@ -16,16 +16,14 @@ waveCemApp.service('questionService', function($http, API_ROUTES) {
     }
 
     this.copyBaseQuestionTable = function() {
-        return $http({method: 'POST', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_QUESTIONS})
+        return $http({method: 'POST', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_QUESTIONS_COPY})
                 .success(handleSuccess)
                 .error(handleError);
     }
 
-    /**
-    **/
     this.copyBaseSubQuestionTable = function() {
         // copy base sub questions
-        $http({method: 'POST', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_SUB_QUESTIONS})
+        $http({method: 'POST', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_SUB_QUESTIONS_COPY})
                 .success(handleSuccess)
                 .error(handleError);
     }

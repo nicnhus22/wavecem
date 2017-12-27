@@ -4,7 +4,7 @@
 waveCemApp.service('clientService', function($http,API_ROUTES) {
 
     this.register = function(client) {
-        return $http({method: 'POST', data: JSON.stringify(client), url: API_ROUTES.BASE_URL+API_ROUTES.CLIENTS})
+        return $http({method: 'POST', data: JSON.stringify(client), url: API_ROUTES.BASE_URL+API_ROUTES.CLIENTS_REGISTER})
         		.success(handleSuccess)
         		.error(handleError);
     }
