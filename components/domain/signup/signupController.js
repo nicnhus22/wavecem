@@ -1,6 +1,6 @@
 
 // create the controller and inject Angular's $scope
-angular.module('waveCemApp').controller('signupController', function($scope, $location, $http, clientService, $timeout) {
+angular.module('waveCemApp').controller('signupController', function($scope, $location, $http, clientService, questionService) {
         
     var State = {
       PENDING: "PENDING",
@@ -9,10 +9,21 @@ angular.module('waveCemApp').controller('signupController', function($scope, $lo
       FAILED: "FAILED",
     };
 
+    // init - steps
+    $scope.firstStep = {
+        label: "Step 1 - Create user",
+        state: State.PENDING
+    }
+    $scope.secondStep = {
+        label: "Step 2 - Setting up account",
+        state: State.PENDING
+    }
+    $scope.thirdStep = {
+        label: "Step 3 - Generating surveys",
+        state: State.PENDING
+    }
+
     $scope.loading         = false 
-    $scope.stateFirstStep  = State.PENDING;
-    $scope.stateSecondStep = State.PENDING;
-    $scope.stateThirdStep  = State.PENDING; 
 
     $scope.credentials = {};
 
@@ -35,37 +46,57 @@ angular.module('waveCemApp').controller('signupController', function($scope, $lo
     $scope.signup = function(credentials) {
         $scope.loading = true;
         
-        $scope.stateFirstStep  = State.IN_PROGRESS;
-        var one = function() {
-            $scope.stateFirstStep  = State.COMPLETED;
-            $scope.stateSecondStep  = State.IN_PROGRESS;
-        }
-        var two = function() {
-            $scope.stateSecondStep  = State.FAILED;
-            $scope.stateThirdStep  = State.IN_PROGRESS;
-        }
-        var three = function() {
-            $scope.stateThirdStep  = State.COMPLETED;
-        }
+        // first step - create client
+        $scope.firstStep.state  = State.IN_PROGRESS;
+        clientService.register(credentials).then(function (response) {
+            if(response.data.success) {
+                $scope.firstStep.state  = State.COMPLETED;
 
-        $timeout(one, 2000);
-        $timeout(two, 4000);
-        $timeout(three, 6000);
+                // second step - copy base questions
+                $scope.secondStep.state  = State.IN_PROGRESS;
+                questionService.copyBaseQuestionTable().then(function (response) {
+                    if(response.data.success) {
+                        $scope.secondStep.state  = State.COMPLETED;
 
-        
-        // $scope.stateFirstStep  = State.COMPLETED;
+                        // third step - copy base questions
+                        $scope.thirdStep.state  = State.IN_PROGRESS;
+                        questionService.copyBaseSubQuestionTable().then(function (response) {
+                            if(response.data.success) {
+                                $scope.thirdStep.state  = State.COMPLETED;
+
+                            } else {
+                                $scope.thirdStep.state  = State.FAILED;
+                            }
+                        });
+                    } else {
+                        $scope.secondStep.state  = State.FAILED;
+                        $scope.secondStep.label += response.data.errorMessage;
+                    }
+                });
+            } else {
+                $scope.firstStep.state  = State.FAILED;
+            }
+        });
 
 
-        // clientService.register(credentials).then(function (response) {
-        //     if(response.data.success) {
-        //         $scope.isFirstStepDone  = true
 
 
+        // $scope.firstStep.state  = State.IN_PROGRESS;
+        // var one = function() {
+        //     $scope.firstStep.state  = State.COMPLETED;
+        //     $scope.secondStep.state  = State.IN_PROGRESS;
+        // }
+        // var two = function() {
+        //     $scope.secondStep.state  = State.FAILED;
+        //     $scope.thirdStep.state  = State.IN_PROGRESS;
+        // }
+        // var three = function() {
+        //     $scope.thirdStep.state  = State.COMPLETED;
+        // }
 
-        //     } else {
-        //         $scope.isFirstStepDone  = false 
-        //     }
-        // });
+        // $timeout(one, 2000);
+        // $timeout(two, 4000);
+        // $timeout(three, 6000); 
     }
 
     $scope.$watch('loading', function() {

@@ -329,6 +329,10 @@ button[name='btn_login'] {
     align-content: flex-start;    
 }
 
+.signup_step {
+    margin-bottom: 20px;
+}
+
 .register_step_label {
     position: absolute;
     top: 50%;

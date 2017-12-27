@@ -23,7 +23,7 @@ waveCemApp.service('questionService', function($http, API_ROUTES) {
 
     this.copyBaseSubQuestionTable = function() {
         // copy base sub questions
-        $http({method: 'POST', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_SUB_QUESTIONS_COPY})
+        return $http({method: 'POST', url: API_ROUTES.BASE_URL+API_ROUTES.BASE_SUB_QUESTIONS_COPY})
                 .success(handleSuccess)
                 .error(handleError);
     }

@@ -8,12 +8,12 @@
             <div id="loading_overlay" class="grey lighten-4">
 
                <!-- STEP 1 -->
-               <div class='grid'>
+               <div class='grid signup_step'>
                   <div class="steps_icon">
-                     <div ng-if="stateFirstStep == 'PENDING'">
+                     <div ng-if="firstStep.state == 'PENDING'">
                        <i class="material-icons medium pending">lens</i>
                      </div>
-                     <div ng-if="stateFirstStep == 'IN_PROGRESS'">
+                     <div ng-if="firstStep.state == 'IN_PROGRESS'">
                         <div class="preloader-wrapper active">
                            <div class="spinner-layer spinner-blue-only">
                               <div class="circle-clipper left">
@@ -28,25 +28,25 @@
                            </div>
                         </div>
                      </div>
-                     <div ng-if="stateFirstStep == 'COMPLETED'">
+                     <div ng-if="firstStep.state == 'COMPLETED'">
                         <i class="material-icons medium completed">check_circle</i>
                      </div>
-                     <div ng-if="stateFirstStep == 'FAILED'">
+                     <div ng-if="firstStep.state == 'FAILED'">
                         <i class="material-icons medium failed">remove_circle</i>
                      </div>
                   </div>
                   <div class="steps_label relative">
-                     <div class="register_step_label" ng-class="{'pending': stateFirstStep == 'PENDING','completed': stateFirstStep == 'COMPLETED','failed': stateFirstStep == 'FAILED','in_progress': stateFirstStep == 'IN_PROGRESS'}">Step 1 - Creating user</div>
+                     <div class="register_step_label" ng-class="{'pending': firstStep.state == 'PENDING','completed': firstStep.state == 'COMPLETED','failed': firstStep.state == 'FAILED','in_progress': firstStep.state == 'IN_PROGRESS'}">{{firstStep.label}}</div>
                   </div>
                </div>
 
                <!-- STEP 2 -->
-               <div class='grid'>
+               <div class='grid signup_step'>
                   <div class="steps_icon">
-                     <div ng-if="stateSecondStep == 'PENDING'">
+                     <div ng-if="secondStep.state == 'PENDING'">
                        <i class="material-icons medium pending">lens</i>
                      </div>
-                     <div ng-if="stateSecondStep == 'IN_PROGRESS'">
+                     <div ng-if="secondStep.state == 'IN_PROGRESS'">
                         <div class="preloader-wrapper active">
                            <div class="spinner-layer spinner-blue-only">
                               <div class="circle-clipper left">
@@ -61,25 +61,25 @@
                            </div>
                         </div>
                      </div>
-                     <div ng-if="stateSecondStep == 'COMPLETED'">
+                     <div ng-if="secondStep.state == 'COMPLETED'">
                         <i class="material-icons medium completed">check_circle</i>
                      </div>
-                     <div ng-if="stateSecondStep == 'FAILED'">
+                     <div ng-if="secondStep.state == 'FAILED'">
                         <i class="material-icons medium failed">remove_circle</i>
                      </div>
                   </div>
                   <div class="steps_label relative">
-                     <div class="register_step_label" ng-class="{'pending': stateSecondStep == 'PENDING','completed': stateSecondStep == 'COMPLETED','failed': stateSecondStep == 'FAILED','in_progress': stateSecondStep == 'IN_PROGRESS'}">Step 2 - Setting up account</div>
+                     <div class="register_step_label" ng-class="{'pending': secondStep.state == 'PENDING','completed': secondStep.state == 'COMPLETED','failed': secondStep.state == 'FAILED','in_progress': secondStep.state == 'IN_PROGRESS'}">{{secondStep.label}}</div>
                   </div>
                </div>
 
                <!-- STEP 3 -->
-               <div class='grid'>
+               <div class='grid signup_step'>
                   <div class="steps_icon">
-                     <div ng-if="stateThirdStep == 'PENDING'">
+                     <div ng-if="thirdStep.state == 'PENDING'">
                        <i class="material-icons medium pending">lens</i>
                      </div>
-                     <div ng-if="stateThirdStep == 'IN_PROGRESS'">
+                     <div ng-if="thirdStep.state == 'IN_PROGRESS'">
                         <div class="preloader-wrapper active">
                            <div class="spinner-layer spinner-blue-only">
                               <div class="circle-clipper left">
@@ -94,15 +94,15 @@
                            </div>
                         </div>
                      </div>
-                     <div ng-if="stateThirdStep == 'COMPLETED'">
+                     <div ng-if="thirdStep.state == 'COMPLETED'">
                         <i class="material-icons medium completed">check_circle</i>
                      </div>
-                     <div ng-if="stateThirdStep == 'FAILED'">
+                     <div ng-if="thirdStep.state == 'FAILED'">
                         <i class="material-icons medium failed">remove_circle</i>
                      </div>
                   </div>
                   <div class="steps_label relative">
-                     <div class="register_step_label" ng-class="{'pending': stateThirdStep == 'PENDING','completed': stateThirdStep == 'COMPLETED','failed': stateThirdStep == 'FAILED','in_progress': stateThirdStep == 'IN_PROGRESS'}">Step 3 - Generating surveys</div>
+                     <div class="register_step_label" ng-class="{'pending': thirdStep.state == 'PENDING','completed': thirdStep.state == 'COMPLETED','failed': thirdStep.state == 'FAILED','in_progress': thirdStep.state == 'IN_PROGRESS'}">{{thirdStep.label}}</div>
                   </div>
                </div>
             </div>
